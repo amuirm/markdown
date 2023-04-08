@@ -5,12 +5,12 @@
 
 #!/bin/bash
 echo test
+#이 부분은 중간에 수정했습니다.
 ```
 
 - 문단
 
 
-`강조`
 
 
 git clone <"HTTPS CODE">
