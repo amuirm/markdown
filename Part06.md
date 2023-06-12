@@ -25,4 +25,29 @@
 4. 누구의 포트 ID가 더 낮은가
 
 BPDU(Bridge Protocol Data Unit) : 브리지가 프레임을 가지고 스패닝 트리 정보를 자기들끼리 주고받게한다, 가지고 있는 정보엔 Root BID, Root Path Cost, Sender BID, Port ID
+
+Non Root Bridge
+    - 루트 브리지가 아닌 브리지나 스위치
+    - 모든 Non Root Bridge는 반드시 한 개의 루트 포트를 갖는다
+
+Designated Port
+    - 스패닝 트리에서 어떤 포트를 풀어주고 어떤 포트를 막을지 결정해주는 포트
+    - 세그먼트당 하나씩의 데지그네이티드 포트를 갖는다
+    - 세그먼트상에서 Root Path Cost를 서로 비교해서 더 작은 Cost를 가진 포트가 데지그네이티드 포트로 선출
+    - 루트 브리지의 모든 포트들은 언제나 데지그네이티드 포트로 전정
+
+5가지 상태 변화
+1. Disabled : 포트가 고장나서 사용할 수 없거나 네트워크 관리자가 포트를 일부러 ShutDown시켜 놓은 상태
+    - 아무 정보도 못 보내고 못 받는 상태
+2. Blocked : 스위치를 맨 처음 키거나 Disabled되어 있는 포트를 관리자가 다시 살린 포트 상태
+    - BPDU 만 주고 받는 상태
+3. Listening : 블로킹 상태에 있던 스위치 포트가 루트 포트나 데지그네이티드 포트로 선정된 상태
+    - BPDU 만 주고 받는 상태
+4. Learning : 리스닝 상태에 있던 스위치 포트가 포워딩 딜레이 디폴트 시간인 15초 동안 그 상태를 계속 유지한 상태
+    - Mac address 정보를 배움
+    - BPDU를 주고 받음
+5. Forwarding : 스위치 포트가 러닝 상태에서 다른 상태( Root port, Desinated port -> Non Designed port)로 넘어가지 않고 다시 포워딩 딜레이 디폴트 시간인 15초 동안 그 상태를 계속 유지하며 상태가 넘어감
+    - 데이터 전송
+    - Mac address를 배워 브리지 테이블을 만듬
+    - BPDU를 주고 받음
 ```
