@@ -50,4 +50,35 @@ Designated Port
     - 데이터 전송
     - Mac address를 배워 브리지 테이블을 만듬
     - BPDU를 주고 받음
+
+
+Mac-Address
+    - 동적 할당
+        300초 기억
+        Learning 과정을 거쳐야 함
+    - 정적 할당
+        영원히 기억함
+        메모리를 낭비
+        자동으로 수정이 불가능함
+
+VLAN
+    1. 스위치로 여러 개의 브로드캐스트 영역을 나누어 줄 수 있다
+    2. 여러개의 스위치를 사용할 필요가 없어 비용이 절감된다
+
+    - 허브나 브리지에서는 지원하지 않는 기능, 따라서 VLAN을 지원하면 이 장비는 스위치 이상의 장비
+
+    VTP
+        1. "Virtual Trunking Protocol"
+        
+        - VTP가 구성되어 있지 않다면 새로운 VLAN을 추가할떄 다른 스위치에서도 VLAN을 하나 하나 추가해 줘야한다
+        - VTP가 구성되어 있다면 다른 스위치와의 트렁크 링크를 통해 VLAN 정보를 자동으로 업데이트 된다
+
+        3가지 형식
+            1. Summary Advertisement : 5분마다 한 번 씩 전달하는 메시지, Revision 
+            넘버 전송한다 받은 스위치는 그 넘버를 보고 자신들의 VLAN 정보가 최선버전인지 아닌지 판단
+            변화가 생겼다면 5분을 기다리지 않고 바로 다음으로 전달
+            2. Subset Advertisement : VLAN 구성이 변경되었을 떄나 VTP 
+            클라이언트로부터 advertisement request 메시지를 받았을때 전송됨
+            3. Advertisement Request : 클라이언트가 VTP 서버에 summary 
+            advertisement와 subset advertisement를 요청하는 용도로 쓰임
 ```
