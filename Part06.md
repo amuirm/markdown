@@ -81,4 +81,20 @@ VLAN
             클라이언트로부터 advertisement request 메시지를 받았을때 전송됨
             3. Advertisement Request : 클라이언트가 VTP 서버에 summary 
             advertisement와 subset advertisement를 요청하는 용도로 쓰임
+
+        3가지 모드
+            1. VTP 서버 모드
+                VLAN 생성, 삭제, 이름을 변경해 줄 수 있으며, VTP 도메인 안에 있는
+                나머지 스위치들에게 VTP 도메인 이름과 VLAN 구성 
+                Configuration Revision 넘버를 전달해 줄 수 있다
+                VTP 도메인 내에 있는 모든 VLAN에 대한 정보를 NVRAM에서 관리한다
+            2. VTP 클라이언트 모드
+                VLAN 생성, 삭제, 이름을 변경해 줄 수 없다. VTP 가 전달해준 VLAN 
+                정보를 받고, 받은 정보를 자기와 연결된 다른 쪽 스위치에 전달하는 
+                것만 가능하다, 저장하지 않기때문에 리부팅하면 사라짐
+            3. VTP 트랜스페어런트 모드
+                VTP 도메인 영역 안에 있지만, 서버로부터 메시지를 받아 자신의 VLAN을 
+                업데이트하거나 자신의 VLAN을 업데이트한 벙보를 다른 스위치에 
+                전달하지 않는다. VTP 도메인 안에서는 살지만 완전히 혼자노는 방식
+                서버에서 받은 메시지를 자신과 연결된 스위치로 전달하는 역할을 함
 ```
